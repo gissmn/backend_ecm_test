@@ -62,7 +62,7 @@ const Log = mongoose.model(
   "Log",
   new Schema({
     type: String,
-    userID: { type: Schema.Types.ObjectId, ref: "User" },
+    adminId: { type: Schema.Types.ObjectId, ref: "Admin" },
     desc: String,
     callId: { type: Schema.Types.ObjectId, ref: "Call" },
   })

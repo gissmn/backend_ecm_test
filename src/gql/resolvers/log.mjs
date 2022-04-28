@@ -1,23 +1,25 @@
 import { gql } from "apollo-server-core";
-
+import getLogs from "../query/getLogs.mjs";
+import cancelCall from "../mutation/cancelCall.mjs";
 const logTypes = gql`
   type Log {
     _id: ID
     type: String
-    userID: ID
+    adminId: ID
     desc: String
     callId: ID
   }
   type Query {
-    getLogs: [Log]
+    getLogs(callId: ID): [Log]
   }
   type Mutation {
-    createLog(type: String, desc: String, userID: ID): Log
+    createLog(type: String, desc: String, adminId: ID): Log
+    cancelCall(callId: ID, desc: String): Call
   }
 `;
 const logResolvers = {
-  Query: {},
-  Mutation: {},
+  Query: { getLogs },
+  Mutation: { cancelCall },
 };
 
 export { logTypes, logResolvers };
