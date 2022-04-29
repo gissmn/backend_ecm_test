@@ -1,7 +1,7 @@
 import { gql } from "apollo-server-core";
 import getAdmins from "../query/getAdmins.mjs";
 import createAdmin from "../mutation/createAdmin.mjs";
-
+import login from "../mutation/login.mjs";
 const adminTypes = gql`
   type Admin {
     _id: ID
@@ -17,6 +17,7 @@ const adminTypes = gql`
     getAdmins: [Admin]
   }
   extend type Mutation {
+    login(email: String!, password: String!): String
     createAdmin(email: String, firstName: String, lastName: String, password: String, phone: String, role: String, department: ID): Admin
   }
 `;
@@ -26,6 +27,7 @@ const adminResolvers = {
   },
   Mutation: {
     createAdmin,
+    login,
   },
 };
 

@@ -1,5 +1,6 @@
 import { ApolloServer } from "apollo-server-express";
 import { ApolloServerPluginDrainHttpServer } from "apollo-server-core";
+import "dotenv/config";
 import express from "express";
 import mongoose from "mongoose";
 import http from "http";
